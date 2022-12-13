@@ -1,0 +1,147 @@
+%! TEX root = ./main.tex
+
+\newpage
+
+\section{Appendixes}
+
+\subsection{A: Codes}
+Below is the source code for carbon sequestration model. Since all three species share the same algorithm, we only represent the source codes for $Choerospondias$.
+\begin{lstlisting}
+function [CT,CP,C,x] = Task(p,choice,year)
+    j = sym('j');
+    t = sym('t');
+    mu1 = 0.5259; eta1 = 0.1764; rho1 = 0.596;
+    average_D1 = 16.86-1.25; N1 = 12600;
+    T1 = 35; p1 = p; P1 = 40+year;
+    q = 0.334; r = 0.0912;
+    Kc = 0.5;
+    L1 = 15; Pr1 = 5300;
+    if choice == 1
+        alpha1 = 0.8*mu1; beta1 = 0; gamma1 = 0.2*mu1+eta1;
+    else
+        alpha1 = 0; beta1 = 0.8*mu1; gamma1 = 0.2*mu1+eta1;
+    end
+    
+    fit_func = fittype('c/(1+a*exp(-b*t))', 'independent', 't',
+    'coefficients', {'a','b','c'});
+    raw_D1 = [0 4.650302778 9.912501403 13.17246799 14.9256427
+    15.89324511 16.69899162 17.081377]';
+    j1 = [0:5:35]';
+    cfun_D1 = fit(j1, raw_D1, fit_func);
+
+    raw_H1 = [0 6.21600482 12.83876406 14.10135112 14.79148078
+    14.95318602 15.40840566 15.64705269]';
+    j1 = [0:5:35]';
+    cfun_H1 = fit(j1, raw_H1, fit_func);
+
+   BM1 = @(j) 0.0001*(pi*(cfun_H1.c/(1+cfun_H1.a*exp(-cfun_H1.b*j)))
+   *(cfun_D1.c/(1+cfun_D1.a*exp(-cfun_D1.b*j)))^2*rho1)/(4*mu1);
+
+   N1==symsum((cfun_D1.c/(1+cfun_D1.a*exp(-cfun_D1.b*j)))*N1*m1
+   *(1-m1)^(j-1),j,1,T1-1)+(cfun_D1.c/(1+cfun_D1.a*exp(-cfun_D1.b*T1)))*N1*(1-m1)^(T1-1);
+   m1 = vpasolve(eqn1,m1,0.00558);
+   m1 = m1(imag(m1)==0 & real(m1)<1);
+
+    n1 = zeros(200,200);
+    CT1 = zeros(1,200);
+    for j = 1:T1
+        if j == T1
+            n1(j,0+1) = N1*(1-m1)^(j-1);
+        else
+            n1(j,0+1) = N1*m1*(1-m1)^(j-1);
+        end
+    end
+    for t = 1:100
+        for j = 1:T1+t
+            if j == 1
+                n1(j,t+1) = N1*m1+sum(n1(P1-1:T1+t,t))*(1-m1)*p1;
+            elseif j >= P1
+                n1(j,t+1) = n1(j-1,t)*(1-m1)*(1-p1);
+            else
+                n1(j,t+1) = n1(j-1,t)*(1-m1);
+            end
+        end
+        for j = 1:T1+t
+            CT1(1,t) = CT1(1,t) + Kc*BM1(j)*n1(j,t+1);
+        end
+    end
+    ... ...
+    CT = CT1 + CT3 + CT3;
+    
+    CP1 = zeros(1,200);
+    H1 = zeros(1,200);
+    for t = 1:100
+        for j = P1:t+T1
+            H1(1,t+L1) = H1(1,t+L1)+n1(j-1,t)*(1-m1)*p1*BM1(j);
+        end
+        CP1(1,t) = Kc*(sum(alpha1*H1(1,t+L1-L1:t+L1))
+        +sum(beta1*H1(1,t+L1-L2:t+L1))+sum(gamma1*H1(1,t+L1-L3:t+L1)));
+        for j = 1:t+L1-L1
+            CP1(1,t) = CP1(1,t) + Kc*alpha1*q*H1(1,j)*(exp(-r*(t-j-L1)));
+        end
+        for j = 1:t+L1-L2
+            CP1(1,t) = CP1(1,t) + Kc*beta1*q*H1(1,j)
+            *(exp(-r*(t-j-L2)));
+        end
+    end
+    ... ...
+    CP = CP1 + CP2 + CP3;
+    
+    C = CT + CP;
+end
+
+
+\end{lstlisting}
+
+
+\subsection{B: Data}
+
+\begin{table}[ht]
+\centering
+\caption{DBH and height variations of different tree species}
+\begin{tabular}{lllllll} 
+\hline
+\multirow{2}{*}{Age [yr]} & \multicolumn{3}{c}{Diameter at breast-height [cm]} & \multicolumn{3}{c}{Height [m]}      \\
+                          & Choerospondias & Taiwania & Toona                  & Choerospondias & Taiwania & Toona   \\ 
+\hline
+0                         & 0              & 0        & 0                      & 0              & 0        & 0       \\
+5                         & 4.650          & 1.570    & 2.488                  & 6.216          & 2.507    & 4.798   \\
+10                        & 9.913          & 9.211    & 5.155                  & 12.839         & 8.047    & 7.281   \\
+15                        & 13.172         & 14.326   & 8.356                  & 14.101         & 13.630   & 10.664  \\
+20                        & 14.926         & 15.505   & 12.194                 & 14.791         & 15.017   & 15.374  \\
+25                        & 15.893         & 18.244   & 14.747                 & 14.953         & 17.427   & 19.125  \\
+30                        & 16.699         & 20.540   & 15.900                 & 15.408         & 18.453   & 21.863  \\
+35                        & 17.081         & 22.082   & 16.890                 & 15.647         & 20.347   & 23.282  \\
+40                        & -              & 23.317   & 17.453                 & -              & 21.423   & 23.707  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{llll} 
+\hline
+\multirow{2}{*}{Component} & \multicolumn{3}{l}{Biomass proportion [\%]}  \\
+                           & Choerospondias & Taiwania & Toona            \\ 
+\hline
+Branches                   & 17.64          & 16.32    & 18.01            \\
+Leaves                     & 7.66           & 6.49     & 7.51             \\
+Root system                & 22.11          & 22.54    & 23.62            \\
+Trunk with bark            & 52.59          & 54.65    & 50.86            \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Statistics of tree species at site}
+\begin{tabular}{lllll}
+\hline
+               & \makecell{Number\\ density [hm2]} & \makecell{Average\\ BDH [cm]} & \makecell{Average\\ height [m]} & \makecell{Trunk\\ density [g/cm3]}  \\
+\hline
+Choerospondias & 1260                   & 16.86            & 15.65              & 0.596                    \\
+Taiwania       & 1140                   & 23.01            & 21.27              & 0.358                    \\
+Toona          & 870                    & 17.21            & 23.57              & 0.475                    \\
+\hline
+\end{tabular}
+\end{table}

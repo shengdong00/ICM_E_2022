@@ -1,0 +1,38 @@
+%! TEX root = ./main.tex
+
+\section{Model Evaluation}
+
+\subsection{Sensitivity Analysis}
+The carbon sequestration model's sensitivity to input variables is listed below. Here we use the average carbon sequestration as the output. The model was tested at the best management strategy that we mentioned above. It can be concluded that the model is more sensitive to changes in rotational period $P_i$, but is generally stable  at this point.
+
+\begin{table}[ht]
+\centering
+\caption{Sensitivity analysis results}
+\begin{tabular}{lllll} 
+\hline
+\multirow{2}{*}{Variables} & \multirow{2}{*}{Fluxes} & \multicolumn{3}{c}{Output}                    \\
+                           &                         & Average C(t) & Average CT(t) & Average CP(t)  \\ 
+\hline
+Felling rate pi            & ±10\%                   & ±0.35\%      & ±0.26\%       & ±0.43\%        \\
+Rotation period Pi         & ±1yr                    & ±0.23\%      & ±1.74\%       & ±2.99\%        \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\subsection{Strength and Weaknesses}
+The main advantages of the model are the following.
+\begin{itemize}
+    \item The tree growth function was fitted by the characteristics of the previous woods growth, reflecting the actual situation under local growth conditions.
+    \item Tree mortality and the way the product is disposed of after use are taken into account, so the model reflects the impact of the current social dimension. 
+    \item The selected indicators are easy to obtain and the overall design of the model is relatively simple. 
+\end{itemize}
+
+However, the model also has shortcomings. 
+\begin{itemize}
+    \item Many special cases are ignored for the sake of simplicity and easy availability of data and models.
+    \item There are still some problems in the setting of social indicators, which lead to the abandonment of indicators due to their insignificance in the actual calculation process. 
+    \item The model is only suitable for quantitative analysis of small scale forestland. Large-scale analysis requires the application of remote sensing models.
+\end{itemize}
+
+

@@ -1,0 +1,73 @@
+%! TEX root = ./main.tex
+
+\section{Assumptions and Notations}
+\subsection{Assumptions}
+%模型的假设条件，需要给出合理的解释（即为什么这样假设），可以用列表的形式
+To simplify the problem and make it convenient for us to simulate real-life conditions, we make the following basic assumptions, each. Of which is properly justified.
+\begin{itemize}
+\item \textbf {We ignore soil carbon sequestration to simplify the model. }We believe that the ultimate purpose of the model is to provide a strategic reference for actual forest management managers, so introducing the variable of soil carbon sequestration, which has high indicator measurement cost and little correlation with forest management practices, is not necessary.
+\item \textbf {We use the biomass method to determine the amount of carbon sequestered by trees and forest products.  }The biomass indicators are the most direct and accurate way to measure the amount of carbon sequestered by trees. The traditional growth environment indicators such as climate and geography, which are difficult to quantify, will be directly reflected in the growth of trees, and the data are easily available, making the model more concise and practical.
+  \begin{itemize}
+  \item We assume a constant ratio between volume and carbon sequestration for the same tree species.
+  \item Total carbon sequestration in an S-shaped curve.
+  \item We divided the total modeled carbon sequestration into two components: the trees themselves and the forest products. The amount of carbon sequestered by forest products is converted to the wood rate of different tree species.
+  \end{itemize}
+\item \textbf {We introduce changes in carbon sequestration from forest tree mortality and forest product waste.   }Not only the carbon sequestration during the tree growth period and the service life of forest products are considered, so that the model has the reference significance of the whole process.
+\begin{itemize}
+  \item We assume a constant tree mortality rate in the same forest and ignore the effects of chance factors such as fire.
+  \item Only two categories of forest products treatment methods are considered: incineration and landfill. Landfill rate is calculated according to domestic waste treatment
+  \end{itemize}
+\item \textbf {The growth conditions of trees remain consistent in the forest.   }This may not be accurate due to different geographical factors including slopes, soil profiles, and water conditions. But the same climate and topographic feature guaranteed that the error of tree growth is small. Therefore, we use the average number to represent the same tree species in the forest.
+\item \textbf {We take trees of the same species and same age as a whole, which is called "a cohort".} Based on the above assumptions, the trees ...
+\end{itemize}
+
+
+\newpage %为了格式整齐，暂时在这里翻一页。最后可以删掉换页命令。
+\subsection{Notations}
+%模型的变量表
+
+The symbols we use in this paper are listed in the following Table 1.
+
+% \usepackage{colortbl}
+\begin{table}[ht] %当表格能够接在上一行之后，并完整地出现在同一页时，格式就不会乱。
+\centering
+\caption{Symbols used in this paper}
+\begin{tabular}{ll}
+\hline
+\textbf{Symbols} & \textbf{Definition}                                          \\ 
+\hline
+    $BM_{ij}$   & Biomass of tree species $i$ at the age of $j$ years \\
+    $H_{ij}$    & Height of tree species $i$ at the age of $j$ years \\
+    $D_{ij}$    & Diameter at breast-height (DBH) of tree species $i$ at the age of $j$ years \\
+    $\mu_{i}, \eta_{i}$   & Biomass proportion of trunk (with bark) and branches in trees of species $i$ \\
+    $\rho_{i}$  & Density of the trunk of species $i$ \\
+    $m_{i}$     & Tree mortality of species $i$ \\
+    $N_{i}$     & Total amount of trees in species $i$ \\
+    $n_{ij}(t)$ & The number of $i$ trees at the age of $j$ \\
+\hline
+    $P_{i}$     & Rotational felling period of $i$ species, after which trees would be cut \\
+    $p_{i}$     & Tree felling rate \\
+    $H_i(t)$    & The $t$th year biomass of felled trees in species $i$ \\
+    $\alpha_i,\beta_i,\gamma_i$  & \makecell[l]{Proportion for sawn-wood, pulpwood and slash respectively in cut\\ down trees of $i$ species} \\
+    $L_i$       & Service life of product $i$ \\
+    $q$         & Landfill rate of forest products \\
+    $r$         & Decomposition rate of forest products after landfill \\
+\hline
+    $K_{C}$     & Conversion coefficient from biomass to carbon sequestration \\
+    $C(t)$      & Total carbon sequestration in the $t$th year\\
+    $CT_{ij}(t)$& The $t$th year forest carbon sequestration of tree species $i$ at the age of $j$ \\
+    $CP_{i}(t)$& The $t$th year product carbon sequestration of tree species $i$ \\
+\hline
+    $Pr_i$      & Price of product $i$ \\
+    $EV(t)$     & Economic value of forest products in the $t$th year \\
+    $x_{ij}$    & Score of the $j$th strategy under indicator $i$ \\
+    $norx_{ij}$ & Normalized score $x_{ij}$\\
+    $Y_{ij}$    & Proportion of $norx_{ij}$ in all $norx_{i}$s \\
+    $E_{i}$     & Information entropy of indicator $i$ \\
+    $W_{i}$     & The weight of indicator $i$\\
+    $S_{j}$     & Final score for forest value under $j$th strategy. \\
+\hline
+\end{tabular}
+\end{table}
+
+%综合评价模型写完之后可能还有一些变量需要添加。

@@ -1,0 +1,270 @@
+\documentclass[12pt]{article}
+
+%%=============setting，设置自己的队号和选题============
+
+\gdef\MCMcontrol{22221112}%队号
+\newcommand{\problem}{E}%选题
+
+\newcommand{\control}{\MCMcontrol}
+\newcommand{\team}{Team \#\ \MCMcontrol}
+\newcommand{\headset}{{\the\year}\\MCM/ICM\\Summary Sheet}
+
+%==========定义摘要，摘要的标题可自定义===================
+\renewenvironment{abstract}[1]{%
+        \small
+        \begin{center}%
+          {\large\bfseries #1\vspace{-.5em}}%
+        \end{center}}
+      {}
+\newcommand\keywords[1]{%
+    \begingroup
+    \par
+    \noindent\textbf{Keywords:} #1\par
+    \endgroup
+}
+
+% 目录居中的重定义
+\makeatletter
+\renewcommand\tableofcontents{%
+    \centerline{\normalfont\Large\bfseries\contentsname%
+    \@mkboth{%
+    \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
+    \vskip 3ex%
+    \@starttoc{toc}%
+    \thispagestyle{fancy}
+    \clearpage}
+\makeatother
+
+\usepackage[toc, page, title, titletoc, header]{appendix}
+\usepackage{graphicx}
+\graphicspath{{figures/}{img/}}
+
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Corollary}[Theorem]{Corollary}
+\newtheorem{Proposition}[Theorem]{Proposition}
+\newtheorem{Definition}[Theorem]{Definition}
+\newtheorem{Example}[Theorem]{Example}
+
+
+%==========设置代码格式===================
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{appendix}
+\definecolor{grey}{rgb}{0.8,0.8,0.8}
+\definecolor{darkgreen}{rgb}{0,0.3,0}
+\definecolor{darkblue}{rgb}{0,0,0.3}
+\def\lstbasicfont{\fontfamily{pcr}\selectfont\footnotesize}
+\lstset{%
+   % numbers=left,
+   % numberstyle=\small,%
+    showstringspaces=false,
+    showspaces=false,%
+    tabsize=4,%
+    frame=lines,%
+    basicstyle={\footnotesize\lstbasicfont},%
+    keywordstyle=\color{darkblue}\bfseries,%
+    identifierstyle=,%
+    commentstyle=\color{darkgreen},%\itshape,%
+    stringstyle=\color{black}%
+}
+\lstloadlanguages{C,C++,Java,Matlab,Mathematica,Python}
+
+\usepackage{geometry}
+\geometry{a4paper, margin = 1.2in}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+
+%==========设置页眉格式===================
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small\sffamily \team}
+\rhead{\small\sffamily Page \thepage\ of \pageref{LastPage}}
+\setlength\parskip{.5\baselineskip}
+
+\usepackage{hyperref}
+\usepackage{mathptmx}% newtxtext
+\usepackage{lipsum}
+\title{The \LaTeX{} Template for MCM Version 1}
+\author{\small \href{http://www.latexstudio.net/}
+  {\includegraphics[width=7cm]{mcmthesis-logo}}}
+\date{\today}
+\begin{document}
+%==========Summary sheet 格式===================
+\thispagestyle{empty}
+\begingroup
+  \setlength{\parindent}{0pt}
+     \begin{minipage}[t]{0.33\linewidth}
+     \bfseries\centering%
+      Problem Chosen\\[0.7pc]
+      {\Huge\textbf{\problem}}\\[2.8pc]
+     \end{minipage}%
+     \begin{minipage}[t]{0.33\linewidth}
+      \centering%
+      \textbf{\headset}%
+     \end{minipage}%
+     \begin{minipage}[t]{0.33\linewidth}
+      \centering\bfseries%
+       Team Control Number\\[0.7pc]
+      {\Huge\textbf{\MCMcontrol}}\\[2.8pc]
+     \end{minipage}\par
+  \rule{\linewidth}{0.8pt}\par
+  %\textbf{\headset}%
+  \par
+  \endgroup
+
+  \bigskip
+%改
+\centerline{\Large\bfseries I Love Latex}
+%改
+\begin{abstract}{Love}
+
+%改
+Disposable plastic products play an indispensable role in people's life, but due to low recycling rate of disposable plastic, and the difficulty to break down, the negative impact on the environment is being deeply concerned worldwide.\par
+To begin with, a developing country with a large number of disposable products and relatively backward treatment methods is selected as the research object. The ecological environment index (EI) was introduced as the standard to measure the environmental status of the country, and the regression relationship between EI and the volume of disposable plastic waste was constructed. The gray prediction model at the interannual scale is established to limit the ecological environment by using EI value to estimate the maximum level of disposable plastic product waste, which can be reduced safely without further damaging the environment 
+
+
+Next, on this basis, we introduced two regions of the country for comparative analysis and determined to what extent the city could reduce the production of disposable plastics waste from the perspective of recent EI, GDP and economic development, and residents' consumption level. When setting the minimum level, our model shows that reducing the output of disposable plastic products will promote the development of the plastic industry towards the direction of green environmental protection, which should focus on the recycling economy of disposable plastics.
+
+
+At last, for this global problem, with regard to this global problem, we discussed the possible solutions to this crisis and the challenges to achieving global goals under the premise of global equity. Such as science and technology sharing, improving plastic waste disposal capacity, international mutual supervision and cooperation, etc
+
+
+ In general, the evaluation system established in this paper provides a relatively comprehensive evaluation scheme for the spatio-temporal dynamic evaluation of ecosystem service value and provides a scientific basis for solving the problem of the global flooding of disposable plastic waste.
+\keywords{ EI;grey prediction;analysis of regression;Plastic waste,;Single-use }
+\end{abstract}
+\newpage
+\tableofcontents  %自动生成目录
+\section{Introduction}
+\subsection{Background}
+
+ The manufacturing of plastics has grown exponentially because of its variety of uses, such as food packaging, consumer products, medical devices, and construction. While there are significant benefits, plastic products do not readily break down, are difficult to dispose of. In fact, plastic waste has severe environmental consequences. The rise of single-use and disposable plastic products results in entire industries dedicated to creating plastic waste. It also suggests that the amount of time the. product is useful is significantly shorter than the time it takes to properly mitigate the plastic waste. Consequently, to solve the plastic waste problem, we managed to develop a plan to significantly reduce and improve how we manage plastic waste\ref{tu1}.%tu1是引用
+
+\begin{figure}[htb]  %更改图的位置到第一句话下面
+\centering %图居中
+\includegraphics[scale=0.9]{tu1.jpg}
+\caption{ Examples of plastic waste}\label{tu1}
+\end{figure}
+\subsection{Problem solving process }
+In order to solve this escalating environmental crisis, we will follow the following steps to solve this escalating environmental problem, under the premise of environmental analysis and plastic waste prediction, we will work to develop solutions to reduce the disposable use of plastic products and waste products.
+
+ We will proceed as follows to tackle these problems:
+\begin{itemize}
+\item First of all, we introduce an environment-related concept -- Ecological Environment Index to evaluate the Environment. We select a country in the Asia-pacific region, calculate the EI value according to the available official data, and use the existing EI value to simulate the function and predict the future. Each level of EI is used as a reference to analyze the source of waste and the severity of current waste. The grey model is used to predict the future garbage production and estimate the output of disposable plastic products according to the proportion.
+\item Secondly, based on the model, we discuss to what extent plastic waste can be reduced to achieve the level of environmental safety, and deeply analyze the similarities and differences of the sources and USES of disposable plastics in different regions and policies.
+\item Then, we expanded to the global waste of plastic products, set a goal to reach the lowest possible level, and explore the impact on human lifestyle, environment, industry, and economy.
+\end{itemize}
+\subsubsection{progress}
+\begin{enumerate}
+\item Finally, given the fairness of this global problem in the world, our team will work out a solution. Write a memo to ICM describing our goals, solutions, and potential problems in achieving them.
+     \begin{enumerate}
+     \item industry
+     \item economy
+     \end{enumerate}
+\item Then, we expanded to the global waste of plastic products, set a goal to reach the lowest possible level, and explore the impact on human lifestyle, environment, industry, and economy.
+
+\end{enumerate}
+\begin{figure}[htb]  %更改图的位置到第一句话下面
+\centering %图居中
+\includegraphics[scale=0.8]{tu3.jpg}
+\caption{Timeline}\label{tu2}
+\end{figure}
+\section{Assumptions and Justification}
+To simplify the problem and make it convenient for us to simulate real-life conditions, we make the following basic assumptions, each. Of which is properly justified.
+\begin{itemize}
+\item We assume that the environment of a region can be measured by an eco-environmental index.
+\item We assume that the eco-environmental index of a representative country in the Asia-pacific region is affected by single-use plastic or solid waste products, thus establishing a restrictive relationship between the two.
+\item Most of our data comes from the office of national statistics, so we can rely on it.
+\end{itemize}
+\section{Notations}
+
+Here, we will use the data of one country in the Asia-pacific region to calculate the EI value of that region. A mathematical model is then established to estimate the maximum level of waste from plastic products and to establish the relationship between the maximum level of waste and the eco-environmental index.
+
+
+We list the symbols and notions used in this paper in this table\ref{biao1} 
+\begin{table}[htb]
+\centering
+\caption{country index1}\label{biao1}
+\begin{tabular}{c|p{18em}}
+\hline
+Symbols & Definition                  \\ \hline
+EI      & Ecological Index            \\ \hline
+BAI     & Biological abundance index  \\ \hline
+VCI     & Vegetation cover index      \\ \hline
+WNDI    & Water network density index \\ \hline
+LNDI    & Land degradation index      \\ \hline
+EQI     & Environmental quality index \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{l|p{18em}}
+\hline
+age & name \\ \hline
+14  & wang \\ \hline
+\end{tabular}
+\end{table}
+
+\section{Ecological Index and Mathematical model}
+Here, we will use the data of one country in the Asia-pacific region to calculate the EI value of that region. A mathematical model is then established to estimate the maximum level of waste from plastic products and to establish the relationship between the maximum level of waste and the eco-environmental index.
+\subsection{Ecological Index}
+Ecological Index refers to a series of indexes reflecting the ecological environment quality of the evaluated region. According to the ecological environment index, the ecological environment is divided into five levels (Table.2), excellent, good, general, bad, worse. According to EI≥75, ecological environment quality is superior.\\
+$x=1$
+$$x=1$$
+\begin{eqnarray}
+EI=0.25\times BAI+  0.2\times VCI +0.2\times WNDI+0.2\times LNDI+0.15\times EQI
+\end{eqnarray}
+\begin{eqnarray}
+y=\int_{100}^{300} \cos \sqrt{x} 
+\end{eqnarray}
+\begin{eqnarray}
+y & = & \begin{bmatrix}
+  1  &4  &6 \\
+  2  &7&5 \\
+  3 & 5&  9
+\end{bmatrix}
+\end{eqnarray}
+\begin{eqnarray}
+\int \frac{1}{\sqrt{1-x^{2}}}\mathrm{d}x & = & \arcsin x +C 
+\end{eqnarray}
+
+\begin{eqnarray}
+y & = & \frac{x}{z} 
+\end{eqnarray}
+
+The biological abundance value data is from the bureau of land and resources, and the data include forest area, water area, grassland area and total area. The vegetation cover index includes woodland area, grassland area, farmland area and total area. The water network density index comes from the water bureau, including river length, lake area and water resources, the land degradation index includes the area of mild, moderate and severe land erosion, and the environmental quality index comes from the environmental protection bureau, including sulfur dioxide emissions, solid waste emissions and COD emissions.
+
+\begin{thebibliography}{99}
+\bibitem{1} Study on the Management Policies of Single-Use Plastics Pollution in China WANG Yanping1，2, DENG Yixiang1*，ZHANG Chenglong2, ZHANG Jiaxu1，2, AN Lihui1，LIU Ruizhi1
+\bibitem{2}I work hard to resist plastic products. Am I wrong? Pick up and sell 19-02-27 10:23
+\bibitem{3}On the influence of "plastic restriction order" on China's plastic industry            Chen Jinghui Guangzhou disabled people's home 510545
+\end{thebibliography}
+
+\newpage
+
+\appendix %将正文和附录分开
+\appendixpage %页码分开
+\addappheadtotoc %章节分开
+
+\section{First appendix}
+
+Here are simulation programmes we used in our model as follow.
+\textbf{\textcolor[rgb]{0.98,0.00,0.00}{Input matlab source:}}
+\lstinputlisting[language=Matlab]{./1.1.m}
+
+\section{Second appendix}
+some more text \textcolor[rgb]{0.98,0.00,0.00}{\textbf{Input C++ source:}}
+\lstinputlisting[language=C++]{./1.2.cpp}
+
+\section{Third appendix}
+some more text \textcolor[rgb]{0.98,0.00,0.00}{\textbf{Input Python source:}}
+\lstinputlisting[language=Python]{./1.3.py}
+
+
+
+\end{document}
+
+

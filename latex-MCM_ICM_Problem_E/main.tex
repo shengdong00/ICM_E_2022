@@ -1,0 +1,122 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% MCM/ICM LaTeX Template %%
+%% 2022 MCM/ICM           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\geometry{left=1in,right=0.75in,top=1in,bottom=1in}
+
+%段落的首行缩进
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+%用于表格
+\usepackage{makecell}
+\usepackage{multirow}
+
+\usepackage{listings}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Replace ABCDEF in the next line with your chosen problem
+% and replace 1111111 with your Team Control Number
+\newcommand{\Problem}{E}
+\newcommand{\Team}{2208269}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{newtxtext}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{newtxmath} % must come after amsXXX
+
+\usepackage[hidelinks]{hyperref} % 目录添加链接
+\usepackage{biblatex} % biblatex
+\addbibresource{References.bib}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\lhead{Team \Team}
+\rhead{}
+\cfoot{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\graphicspath{{.}}  % Place your graphic files in the same directory as your main document
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif, .png}
+\thispagestyle{empty}
+\vspace*{-16ex}
+\centerline{\begin{tabular}{*3{c}}
+	\parbox[t]{0.3\linewidth}{\begin{center}\textbf{Problem Chosen}\\ \Large \textcolor{red}{\Problem}\end{center}}
+	& \parbox[t]{0.3\linewidth}{\begin{center}\textbf{2022\\ MCM/ICM\\ Summary Sheet}\end{center}}
+	& \parbox[t]{0.3\linewidth}{\begin{center}\textbf{Team Control Number}\\ \Large \textcolor{red}{\Team}\end{center}}	\\
+	\hline
+\end{tabular}}
+%%%%%%%%%%% Begin Summary %%%%%%%%%%%
+% Enter your summary here replacing the (red) text
+% Replace the text from here ...
+  \bigskip
+%改
+\centerline{\Large\bfseries More Logging, More Fixed Carbon? Reasonable!}
+  \bigskip
+  
+First, we developed a \textbf{carbon sequestration model} using \textbf{the biomass method}. We decomposed the total carbon sequestration into two parts: forest product sequestration and forest carbon sequestration, and the management strategy into logging strategy and production strategy. We derived the best calculation function for forest biomass by \textbf{curve fitting} and converted it into carbon sequestration. \textbf{Cluster analysis method} is applied to classify forest products for carbon sequestration calculation.
+
+We also innovatively considered the effect of the final destination of trees and forest products (landfill and incineration) on the amount of carbon sequestered. By analyzing the changes of carbon sequestration under different management strategy, we finally derived a model of \textbf{forest carbon sequestration} under specified strategy for forest management measures.(Task1)
+
+Then, we used the \textbf{entropy weight method} to comprehensively evaluate the forest value.
+Combining the carbon sequestration model and related research bases, we construct indicators from three traditional dimensions: \textbf{ecological, social, and economic}, to reflect the comprehensive value of the forest. We also introduced \textbf{sustainability} variables as a reference for forest development potential, taking into account today's green development trend.(Task2)
+
+Third, we take a man-made experimental forest in Qingping state-owned forest in Hunan Province as an example and substitute the model to study the best management plan. A 2 × 9 management plan matrix was obtained by setting different cutting rates and different product management strategies. We use the \textbf{maximum value of the weighted sum of the factors} as the objective function, and program the model through MATLAB to achieve the model solution to obtain the best management plan under comprehensive evaluation. That is, \textbf{the logging rate is 0.01 and the production strategy is to produce as much sawn timber as possible.}
+
+Based on the existing management strategy for the forest, we calculated the 100-year carbon sequestration of the current forest at \textbf{160.6 ton}. Comparing the best management strategy with the existing management strategy, a \textbf{smooth transition model} is selected as the transition plan. (Task3)
+
+Finally, we conducted a \textbf{sensitivity analysis} of the model with the results of the example calculations and explained and analyzed the strengths and limitations of the model. The research results are finally presented to the public in the form of a short non-technical article. We explain the design logic of the model in relatively easy-to-understand language to justify the forest management measures derived from the model that contradict conventional wisdom.(Task4)
+
+  \bigskip
+  
+\textbf{Keywords:}{ Forest carbon sequestration; Entropy weight method; Biomass method; Multidimensional evaluation model; Climate change }
+
+%%%%%%%%%%% End Summary %%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\pagestyle{fancy}
+% Uncomment the next line to generate a Table of Contents
+%\tableofcontents 
+\newpage
+\setcounter{page}{1}
+\rhead{Page \thepage\ }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+%Introduction
+\input{body/Introduction}
+
+%Assumptions and Notations
+\input{body/Assumptions and Notations}
+
+%Explain the model in task I
+\input{body/Task I}
+
+%Explain the model in task II
+\input{body/Task II}
+
+%Implementation
+\input{body/Task III}
+
+\input{body/Model Evaluation}
+
+\input{body/Task IV}
+
+\input{body/Conclusion}
+
+\input{body/Appendixes}
+
+\input{body/References}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+\end
